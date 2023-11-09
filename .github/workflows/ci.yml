@@ -17,6 +17,7 @@ jobs:
 
       - name: Runs shell script static analysis
         run: |
+          sudo apt-get update -y
           sudo apt-get install shellcheck
           ./run-tests.sh --check-shellscript
 
@@ -122,7 +123,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Install system dependencies
-        run: sudo apt-get install libkrb5-dev
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install libkrb5-dev
 
       - name: Setup Python
         uses: actions/setup-python@v4
